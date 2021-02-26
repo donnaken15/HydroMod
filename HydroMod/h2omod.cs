@@ -1,8 +1,10 @@
 ﻿
+using S16.Drawing;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace HydroMod
@@ -67,9 +69,55 @@ namespace HydroMod
         private void selectLuxFile(object sender, TreeViewEventArgs e)
         {
             if (e.Node.Parent != null)
-                MessageBox.Show(
-                    BitConverter.ToString(myLuxs[e.Node.Parent.Index].Get(e.Node.Text))
-                );
+            {
+                Lux curLux = myLuxs[e.Node.Parent.Index];
+                LuxFile curFile = curLux.FileList[e.Node.Index];
+                luxTextMeta.Text = "Filename : " + e.Node.Text +
+                    "\nAddress  : " + curFile.Address.ToString("X8") +
+                    "\nSize     : " + curFile.Length.ToString("X8");
+                string curFileString = new string(Encoding.ASCII.GetChars(curLux.Get(e.Node.Text))).Replace("\0", "\x01");
+                dataViewText.Text = curFileString;
+                dataViewText.MaxLength = curFileString.Length;
+                DDSImage curFileImage = new DDSImage(curLux.Get(e.Node.Text));
+                if (curFileImage != null)
+                {
+                    /*{
+                    Stream myImage = new MemoryStream();
+                        DDSImage.Save(curFileImage, myImage, curFileImage.Format);
+                        byte[] test = new byte[0x20];
+                        myImage.Read(test, 0, 0x20);
+                        MessageBox.Show(BitConverter.ToString(test));
+                    myImage.Close();
+                    }*/
+                    dataViewImage.Image = (curFileImage.BitmapImage);
+                    curFileImage.BitmapImage.Save("TEST.PNG");
+                }
+            }
+        }
+
+        private void saveLuxFile(object sender, EventArgs e)
+        {
+            saveLuxFDiag.ShowDialog();
+        }
+
+        private void saveLuxFDiagOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            File.WriteAllBytes(saveLuxFDiag.FileName, myLuxs[luxView.SelectedNode.Parent.Index].Get(luxView.SelectedNode.Text));
+        }
+
+        private void luxViewClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.Node.Parent != null)
+                {
+                    luxFileCtxtM.Show(Cursor.Position);
+                }
+                else
+                {
+
+                }
+            }
         }
     }
 }

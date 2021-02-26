@@ -63,6 +63,16 @@ namespace HydroMod.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AudioHS {
+            get {
+                object obj = ResourceManager.GetObject("AudioHS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap DeleteHS {
             get {
                 object obj = ResourceManager.GetObject("DeleteHS", resourceCulture);
@@ -106,6 +116,16 @@ namespace HydroMod.Properties {
         internal static System.Drawing.Bitmap openHS {
             get {
                 object obj = ResourceManager.GetObject("openHS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap QuestionMark16 {
+            get {
+                object obj = ResourceManager.GetObject("QuestionMark16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

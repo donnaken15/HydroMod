@@ -1,8 +1,8 @@
 what is known about the data file so far
 - all is uncompressed
 - file listing is at the bottom
-- the value at `00000008` points to this file listing
-- the value at `00000004` is the amount of files
+- `00000008` points to this file listing
+- `00000004` counts amount of files
 
 ```
 Offset(h) 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
@@ -43,3 +43,12 @@ C4B5DED0  5F 30 36 5F 63 6E 00 01 00 00 7D 00 00 00 09 00  _06_cn....}.....
 C4B5DEE0  00 00 35 00 00 00 14 00 00 00 90 FD 12 00 0C 0C  ..5........ý....
 C4B5DEF0  81 7C D9 07 00 00 88 FD 12 00 D9 07 0B 00 9C 00  .|Ù...ˆý..Ù...œ.
 ```
+
+## todos:
+
+figure out what allows for longer file name
+figure out literally everything else
+
+## credits:
+
+DevIL.NET for DDS reading

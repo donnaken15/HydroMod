@@ -34,13 +34,19 @@
             this.legendTxt2 = new System.Windows.Forms.Label();
             this.legendTxt3 = new System.Windows.Forms.Label();
             this.ok = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.legendImg3 = new System.Windows.Forms.PictureBox();
             this.legendImg2 = new System.Windows.Forms.PictureBox();
             this.legendImg1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.legendImg0 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.legendImg3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.legendImg2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.legendImg1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.legendImg0)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,12 +93,42 @@
             // ok
             // 
             this.ok.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.ok.Location = new System.Drawing.Point(106, 133);
+            this.ok.Location = new System.Drawing.Point(221, 133);
             this.ok.Name = "ok";
             this.ok.Size = new System.Drawing.Size(34, 23);
             this.ok.TabIndex = 8;
             this.ok.Text = "OK";
             this.ok.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(154, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(90, 16);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "FMOD Bank";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(154, 97);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(70, 16);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Unknown";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::HydroMod.Properties.Resources.QuestionMark16;
+            this.pictureBox4.Location = new System.Drawing.Point(133, 97);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox4.TabIndex = 6;
+            this.pictureBox4.TabStop = false;
             // 
             // legendImg3
             // 
@@ -124,6 +160,16 @@
             this.legendImg1.TabIndex = 3;
             this.legendImg1.TabStop = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::HydroMod.Properties.Resources.AudioHS;
+            this.pictureBox1.Location = new System.Drawing.Point(133, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // legendImg0
             // 
             this.legendImg0.Image = global::HydroMod.Properties.Resources.ThumbnailLoadingHS;
@@ -138,14 +184,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(152, 168);
+            this.ClientSize = new System.Drawing.Size(267, 168);
             this.Controls.Add(this.ok);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.legendTxt3);
+            this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.legendImg3);
             this.Controls.Add(this.legendTxt2);
             this.Controls.Add(this.legendImg2);
             this.Controls.Add(this.legendImg1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.legendTxt1);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.legendTxt0);
             this.Controls.Add(this.legendImg0);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -156,9 +206,11 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "LUX Item Key";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.legendImg3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.legendImg2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.legendImg1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.legendImg0)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -176,5 +228,9 @@
         private System.Windows.Forms.PictureBox legendImg3;
         private System.Windows.Forms.Label legendTxt3;
         private System.Windows.Forms.Button ok;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label label4;
     }
 }

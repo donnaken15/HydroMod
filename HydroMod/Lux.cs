@@ -23,6 +23,8 @@ namespace HydroMod
         public string Name;
 
         public uint Address;
+
+        public uint Length;
     }
 
     public class Lux
@@ -41,8 +43,9 @@ namespace HydroMod
 
         public byte[] Get(string fileName)
         {
-            byte[] file = new byte[0x100];
-            luxStream.Position = FileList[FileListStr.IndexOf(fileName)].Address;
+            LuxFile fileToRead = FileList[FileListStr.IndexOf(fileName)];
+            luxStream.Position = fileToRead.Address;
+            byte[] file = new byte[fileToRead.Length];
             luxStream.Read(file, 0, file.Length);
             return file;
         }
@@ -71,14 +74,21 @@ namespace HydroMod
                 luxStream.Read(buf, 0, 0x60);
                 //MessageBox.Show(BitConverter.ToString(buf));
                 // copy id of item
-                char[] id = new char[0x14];
-                Array.Copy(buf, id, 0x14);
+                int j;
+                for (j = 0; j < 0x23; j++)
+                {
+                    if (buf[j] == 0x00)
+                        break;
+                }
+                char[] id = new char[j];
+                Array.Copy(buf, id, j);
                 newFile.Name = new string(id);
                 FileListStr.Add(newFile.Name);
                 // copy address
                 //byte[] ptr = new byte[4];
                 //Array.Copy(buf, 0x48, ptr, 0, 4);
                 newFile.Address = BitConverter.ToUInt32(buf, 0x48);
+                newFile.Length = BitConverter.ToUInt32(buf, 0x40);
                 FileList.Add(newFile);
             }
         }

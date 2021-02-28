@@ -27,7 +27,7 @@ namespace HydroMod
         public uint Length;
     }
 
-    public class Lux
+    public class Lux : IDisposable
     {
         public const int LUX_PTR_FILECNT = 4;
         public const int LUX_PTR_FILELST = 8;
@@ -37,7 +37,7 @@ namespace HydroMod
         //public TreeNode _treeNode;
 
         public List<LuxFile> FileList    = new List<LuxFile>();
-        private List<string> FileListStr = new List<string >();
+        public List<string>  FileListStr = new List<string >();
 
         public uint FileLstAddr, FileCntAddr;
 
@@ -91,6 +91,12 @@ namespace HydroMod
                 newFile.Length = BitConverter.ToUInt32(buf, 0x40);
                 FileList.Add(newFile);
             }
+        }
+
+        public void Dispose()
+        {
+            luxStream.Close();
+            FileList = null;
         }
     }
 }

@@ -46,9 +46,9 @@ C4B5DEF0  81 7C D9 07 00 00 88 FD 12 00 D9 07 0B 00 9C 00  .|Ù...ˆý..Ù...œ.
 
 ## todos:
 
-figure out what allows for longer file name
-figure out literally everything else
+* figure out what allows for longer file name
+* figure out literally everything else
 
 ## credits:
 
-DevIL.NET for DDS reading
+Jon D. Jackson for DDS reader

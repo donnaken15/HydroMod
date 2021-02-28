@@ -39,15 +39,15 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevIL.NET">
-      <HintPath>..\..\DevIL.NET.dll</HintPath>
+    <Reference Include="Be.Windows.Forms.HexBox">
+      <HintPath>E:\Be.Windows.Forms.HexBox.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DDSImage.cs" />
+    <Compile Include="DDS.cs" />
     <Compile Include="h2omod.cs">
       <SubType>Form</SubType>
     </Compile>

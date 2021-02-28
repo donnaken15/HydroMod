@@ -1,11 +1,12 @@
 ﻿
-using S16.Drawing;
+using DDS;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using Be.Windows.Forms;
 
 namespace HydroMod
 {
@@ -75,22 +76,36 @@ namespace HydroMod
                 luxTextMeta.Text = "Filename : " + e.Node.Text +
                     "\nAddress  : " + curFile.Address.ToString("X8") +
                     "\nSize     : " + curFile.Length.ToString("X8");
-                string curFileString = new string(Encoding.ASCII.GetChars(curLux.Get(e.Node.Text))).Replace("\0", "\x01");
-                dataViewText.Text = curFileString;
-                dataViewText.MaxLength = curFileString.Length;
-                DDSImage curFileImage = new DDSImage(curLux.Get(e.Node.Text));
-                if (curFileImage != null)
+                dataViewImage.Size = new Size(512, 512);
+                dataViewImage.Image = null;
+                dataViewBin.ByteProvider = new DynamicByteProvider(curLux.Get(e.Node.Text));
+                switch (e.Node.Text.Substring(0, 5))
                 {
-                    /*{
-                    Stream myImage = new MemoryStream();
-                        DDSImage.Save(curFileImage, myImage, curFileImage.Format);
-                        byte[] test = new byte[0x20];
-                        myImage.Read(test, 0, 0x20);
-                        MessageBox.Show(BitConverter.ToString(test));
-                    myImage.Close();
-                    }*/
-                    dataViewImage.Image = (curFileImage.BitmapImage);
-                    curFileImage.BitmapImage.Save("TEST.PNG");
+                    case "txtr1":
+                        DDSImage myTex = DDSImage.Load(curLux.Get(e.Node.Text));
+                        dataViewImage.Image = myTex.Images[0];
+                        //byte[] _DDS = new byte[curFile.Length - 0x1C];
+                        //curLux.luxStream.Position = curFile.Address;
+                        //curLux.luxStream.Read(_DDS, 0x1C, _DDS.Length);
+                        //Array.Copy(curLux.Get(e.Node.Text), 0x1C, DDS, 0, DDS.Length);
+                        
+                        break;
+                    case "data.":
+                        string curFileString = new string(Encoding.ASCII.GetChars(curLux.Get(e.Node.Text))).Replace("\0", "\x01");
+                        dataViewText.Text = curFileString;
+                        dataViewText.MaxLength = curFileString.Length;
+                        break;
+                    case "mesh3":
+                        break;
+                    case "anim4":
+                        break;
+                    case "fbnk.":
+                        break;
+                    case "shad4":
+                        break;
+                    case "coll4":
+                        break;
+
                 }
             }
         }
@@ -118,6 +133,34 @@ namespace HydroMod
 
                 }
             }
+        }
+
+        private void Exit(object sender, FormClosingEventArgs e)
+        {
+            for (int i = 0; i < myLuxs.Count; i++)
+            {
+                myLuxs[i].Dispose();
+            }
+            myLuxs.Clear();
+        }
+
+        private void closeLux(object sender, EventArgs e)
+        {
+            int killLux;
+            if (luxView.SelectedNode.Parent == null)
+            {
+                killLux = luxView.SelectedNode.Index;
+            }
+            else
+            {
+                killLux = luxView.SelectedNode.Parent.Index;
+            }
+            luxView.Nodes.RemoveAt(killLux);
+            myLuxs[killLux].Dispose();
+            myLuxs.RemoveAt(killLux);
+            luxTextMeta.Text = "No file selected";
+            dataViewImage.Size = new Size(512, 512);
+            dataViewImage.Image = null;
         }
     }
 }

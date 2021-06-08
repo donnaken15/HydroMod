@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("00009A00", 2, 2);
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("0000C480", 2, 2);
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("0000E124", 3, 3);
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("TRITON.LUX", 1, 1, new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3});
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("00009A00", 2, 2);
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("0000C480", 2, 2);
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("0000E124", 3, 3);
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("TRITON.LUX", 1, 1, new System.Windows.Forms.TreeNode[] {
+            treeNode5,
+            treeNode6,
+            treeNode7});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(h2omod));
             this.menuBar = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,6 +59,7 @@
             this.dataViewTImage = new System.Windows.Forms.TabPage();
             this.dataViewImage = new System.Windows.Forms.PictureBox();
             this.dataViewTBin = new System.Windows.Forms.TabPage();
+            this.dataViewBin = new Be.Windows.Forms.HexBox();
             this.dataViewTText = new System.Windows.Forms.TabPage();
             this.dataViewText = new System.Windows.Forms.TextBox();
             this.dataViewTMeta = new System.Windows.Forms.TabPage();
@@ -73,7 +74,11 @@
             this.replaceFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eraseFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataViewBin = new Be.Windows.Forms.HexBox();
+            this.luxCtnrCtxtM = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.closeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.extractAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.luxCtnrXtrctDiag = new System.Windows.Forms.FolderBrowserDialog();
             this.menuBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spCnt)).BeginInit();
             this.spCnt.Panel1.SuspendLayout();
@@ -88,6 +93,7 @@
             this.toolBar.SuspendLayout();
             this.luxViewRoot.SuspendLayout();
             this.luxFileCtxtM.SuspendLayout();
+            this.luxCtnrCtxtM.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuBar
@@ -125,7 +131,7 @@
             // 
             this.openToolStripMenuItem.Image = global::HydroMod.Properties.Resources.openHS;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.findLux);
             // 
@@ -133,52 +139,52 @@
             // 
             this.saveToolStripMenuItem.Image = global::HydroMod.Properties.Resources.saveHS;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeLux);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(130, 6);
             // 
             // replaceDataToolStripMenuItem
             // 
             this.replaceDataToolStripMenuItem.Image = global::HydroMod.Properties.Resources.Unnestrelatedfiles_7219_32;
             this.replaceDataToolStripMenuItem.Name = "replaceDataToolStripMenuItem";
-            this.replaceDataToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.replaceDataToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.replaceDataToolStripMenuItem.Text = "Replace File";
             // 
             // eraseDataToolStripMenuItem
             // 
             this.eraseDataToolStripMenuItem.Image = global::HydroMod.Properties.Resources.DeleteHS;
             this.eraseDataToolStripMenuItem.Name = "eraseDataToolStripMenuItem";
-            this.eraseDataToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.eraseDataToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.eraseDataToolStripMenuItem.Text = "Erase File";
             // 
             // saveFileToolStripMenuItem
             // 
             this.saveFileToolStripMenuItem.Image = global::HydroMod.Properties.Resources.saveHS;
             this.saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
-            this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.saveFileToolStripMenuItem.Text = "Save File";
             this.saveFileToolStripMenuItem.Click += new System.EventHandler(this.saveLuxFile);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(130, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // editToolStripMenuItem
@@ -220,24 +226,24 @@
             this.luxView.ImageList = this.comGfxKeys;
             this.luxView.Location = new System.Drawing.Point(0, 0);
             this.luxView.Name = "luxView";
-            treeNode1.ImageIndex = 2;
-            treeNode1.Name = "test01addr";
-            treeNode1.SelectedImageIndex = 2;
-            treeNode1.Text = "00009A00";
-            treeNode2.ImageIndex = 2;
-            treeNode2.Name = "test02addr";
-            treeNode2.SelectedImageIndex = 2;
-            treeNode2.Text = "0000C480";
-            treeNode3.ImageIndex = 3;
-            treeNode3.Name = "0000E124";
-            treeNode3.SelectedImageIndex = 3;
-            treeNode3.Text = "0000E124";
-            treeNode4.ImageIndex = 1;
-            treeNode4.Name = "test01";
-            treeNode4.SelectedImageIndex = 1;
-            treeNode4.Text = "TRITON.LUX";
+            treeNode5.ImageIndex = 2;
+            treeNode5.Name = "test01addr";
+            treeNode5.SelectedImageIndex = 2;
+            treeNode5.Text = "00009A00";
+            treeNode6.ImageIndex = 2;
+            treeNode6.Name = "test02addr";
+            treeNode6.SelectedImageIndex = 2;
+            treeNode6.Text = "0000C480";
+            treeNode7.ImageIndex = 3;
+            treeNode7.Name = "0000E124";
+            treeNode7.SelectedImageIndex = 3;
+            treeNode7.Text = "0000E124";
+            treeNode8.ImageIndex = 1;
+            treeNode8.Name = "test01";
+            treeNode8.SelectedImageIndex = 1;
+            treeNode8.Text = "TRITON.LUX";
             this.luxView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4});
+            treeNode8});
             this.luxView.SelectedImageIndex = 0;
             this.luxView.Size = new System.Drawing.Size(219, 661);
             this.luxView.TabIndex = 1;
@@ -293,7 +299,7 @@
             this.dataViewTImage.Location = new System.Drawing.Point(4, 22);
             this.dataViewTImage.Name = "dataViewTImage";
             this.dataViewTImage.Padding = new System.Windows.Forms.Padding(3);
-            this.dataViewTImage.Size = new System.Drawing.Size(747, 655);
+            this.dataViewTImage.Size = new System.Drawing.Size(847, 635);
             this.dataViewTImage.TabIndex = 0;
             this.dataViewTImage.Text = "Image View";
             this.dataViewTImage.UseVisualStyleBackColor = true;
@@ -320,12 +326,29 @@
             this.dataViewTBin.Text = "Binary View";
             this.dataViewTBin.UseVisualStyleBackColor = true;
             // 
+            // dataViewBin
+            // 
+            this.dataViewBin.ColumnInfoVisible = true;
+            this.dataViewBin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataViewBin.Font = new System.Drawing.Font("MS Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataViewBin.GroupSize = 1;
+            this.dataViewBin.InfoForeColor = System.Drawing.Color.Black;
+            this.dataViewBin.LineInfoVisible = true;
+            this.dataViewBin.Location = new System.Drawing.Point(3, 3);
+            this.dataViewBin.Name = "dataViewBin";
+            this.dataViewBin.ReadOnly = true;
+            this.dataViewBin.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
+            this.dataViewBin.Size = new System.Drawing.Size(841, 629);
+            this.dataViewBin.TabIndex = 1;
+            this.dataViewBin.UseFixedBytesPerLine = true;
+            this.dataViewBin.VScrollBarVisible = true;
+            // 
             // dataViewTText
             // 
             this.dataViewTText.Controls.Add(this.dataViewText);
             this.dataViewTText.Location = new System.Drawing.Point(4, 22);
             this.dataViewTText.Name = "dataViewTText";
-            this.dataViewTText.Size = new System.Drawing.Size(747, 655);
+            this.dataViewTText.Size = new System.Drawing.Size(847, 635);
             this.dataViewTText.TabIndex = 2;
             this.dataViewTText.Text = "Text View";
             this.dataViewTText.UseVisualStyleBackColor = true;
@@ -338,7 +361,7 @@
             this.dataViewText.Multiline = true;
             this.dataViewText.Name = "dataViewText";
             this.dataViewText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.dataViewText.Size = new System.Drawing.Size(747, 655);
+            this.dataViewText.Size = new System.Drawing.Size(847, 635);
             this.dataViewText.TabIndex = 0;
             // 
             // dataViewTMeta
@@ -346,7 +369,7 @@
             this.dataViewTMeta.Controls.Add(this.luxTextMeta);
             this.dataViewTMeta.Location = new System.Drawing.Point(4, 22);
             this.dataViewTMeta.Name = "dataViewTMeta";
-            this.dataViewTMeta.Size = new System.Drawing.Size(747, 655);
+            this.dataViewTMeta.Size = new System.Drawing.Size(847, 635);
             this.dataViewTMeta.TabIndex = 3;
             this.dataViewTMeta.Text = "Information";
             this.dataViewTMeta.UseVisualStyleBackColor = true;
@@ -354,11 +377,11 @@
             // luxTextMeta
             // 
             this.luxTextMeta.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.luxTextMeta.Font = new System.Drawing.Font("MS Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.luxTextMeta.Font = new System.Drawing.Font("MS Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.luxTextMeta.Location = new System.Drawing.Point(0, 0);
             this.luxTextMeta.Name = "luxTextMeta";
             this.luxTextMeta.Padding = new System.Windows.Forms.Padding(10);
-            this.luxTextMeta.Size = new System.Drawing.Size(747, 655);
+            this.luxTextMeta.Size = new System.Drawing.Size(847, 635);
             this.luxTextMeta.TabIndex = 0;
             this.luxTextMeta.Text = "No file selected";
             // 
@@ -449,22 +472,37 @@
             this.saveFileToolStripMenuItem1.Text = "Save File";
             this.saveFileToolStripMenuItem1.Click += new System.EventHandler(this.saveLuxFile);
             // 
-            // dataViewBin
+            // luxCtnrCtxtM
             // 
-            this.dataViewBin.ColumnInfoVisible = true;
-            this.dataViewBin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataViewBin.Font = new System.Drawing.Font("MS Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataViewBin.GroupSize = 1;
-            this.dataViewBin.InfoForeColor = System.Drawing.Color.Black;
-            this.dataViewBin.LineInfoVisible = true;
-            this.dataViewBin.Location = new System.Drawing.Point(3, 3);
-            this.dataViewBin.Name = "dataViewBin";
-            this.dataViewBin.ReadOnly = true;
-            this.dataViewBin.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
-            this.dataViewBin.Size = new System.Drawing.Size(841, 629);
-            this.dataViewBin.TabIndex = 1;
-            this.dataViewBin.UseFixedBytesPerLine = true;
-            this.dataViewBin.VScrollBarVisible = true;
+            this.luxCtnrCtxtM.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.extractAllToolStripMenuItem,
+            this.toolStripSeparator4,
+            this.closeToolStripMenuItem1});
+            this.luxCtnrCtxtM.Name = "luxCtnrCtxtM";
+            this.luxCtnrCtxtM.Size = new System.Drawing.Size(131, 54);
+            // 
+            // closeToolStripMenuItem1
+            // 
+            this.closeToolStripMenuItem1.Name = "closeToolStripMenuItem1";
+            this.closeToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.closeToolStripMenuItem1.Text = "Close";
+            this.closeToolStripMenuItem1.Click += new System.EventHandler(this.closeLux);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(127, 6);
+            // 
+            // extractAllToolStripMenuItem
+            // 
+            this.extractAllToolStripMenuItem.Name = "extractAllToolStripMenuItem";
+            this.extractAllToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.extractAllToolStripMenuItem.Text = "Extract All...";
+            this.extractAllToolStripMenuItem.Click += new System.EventHandler(this.luxCtnrXtrctAll);
+            // 
+            // luxCtnrXtrctDiag
+            // 
+            this.luxCtnrXtrctDiag.Description = "Extract all files from this Lux.";
             // 
             // h2omod
             // 
@@ -499,6 +537,7 @@
             this.toolBar.PerformLayout();
             this.luxViewRoot.ResumeLayout(false);
             this.luxFileCtxtM.ResumeLayout(false);
+            this.luxCtnrCtxtM.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -543,6 +582,11 @@
         private System.Windows.Forms.ToolStripMenuItem eraseFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveFileToolStripMenuItem1;
         private Be.Windows.Forms.HexBox dataViewBin;
+        private System.Windows.Forms.ContextMenuStrip luxCtnrCtxtM;
+        private System.Windows.Forms.ToolStripMenuItem extractAllToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem1;
+        private System.Windows.Forms.FolderBrowserDialog luxCtnrXtrctDiag;
     }
 }
 

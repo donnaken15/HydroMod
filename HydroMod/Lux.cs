@@ -97,6 +97,9 @@ namespace HydroMod
         {
             luxStream.Close();
             FileList = null;
+            FileListStr = null;
+            FileCntAddr = 0;
+            FileLstAddr = 0;
         }
     }
 }

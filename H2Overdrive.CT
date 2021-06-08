@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="24">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"Menu Timer"</Description>
+      <LastState Value="99" Activated="1" RealAddress="006BA51C"/>
+      <VariableType>Float</VariableType>
+      <Address>sdaemon.exe+2BA51C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"Global Time"</Description>
+      <LastState Value="34.63297653" RealAddress="0078C0AC"/>
+      <VariableType>Float</VariableType>
+      <Address>sdaemon.exe+38C0AC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Player Time"</Description>
+      <LastState Value="34.63297653" RealAddress="0078C0B8"/>
+      <VariableType>Float</VariableType>
+      <Address>sdaemon.exe+38C0B8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"Time Left"</Description>
+      <LastState Value="1001" Activated="1" RealAddress="0078C0B0"/>
+      <VariableType>Float</VariableType>
+      <Address>sdaemon.exe+38C0B0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"Boost"</Description>
+      <VariableType>Float</VariableType>
+      <Address>"sdaemon.exe"+003398B8</Address>
+      <Offsets>
+        <Offset>6D0</Offset>
+        <Offset>14</Offset>
+        <Offset>8</Offset>
+        <Offset>30</Offset>
+        <Offset>2B0</Offset>
+      </Offsets>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

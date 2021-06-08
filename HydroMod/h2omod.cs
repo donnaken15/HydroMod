@@ -13,6 +13,23 @@ namespace HydroMod
     public partial class h2omod : Form
     {
         List<Lux> myLuxs = new List<Lux>();
+        char[] bUnits = " KMGT".ToCharArray();
+        uint bThousand = 1024; // based *ibibytes
+
+        public string FileSize(long length)
+        {
+            float newSize = length;
+            byte bUnit = 0;
+            while (newSize >= bThousand && bUnit < bUnits.Length - 1)
+            {
+                bUnit++;
+                newSize /= bThousand;
+            }
+            if (bUnit == 0)
+                return newSize.ToString("0") + " bytes";
+            else
+                return newSize.ToString("0.0 ") + bUnits[bUnit] + 'B';
+        }
 
         public h2omod()
         {
@@ -41,7 +58,7 @@ namespace HydroMod
                 int nodeIcon = 0;
                 foreach (LuxFile myLuxFile in myNewLux.FileList)
                 {
-                    switch (myLuxFile.Name.Substring(0,5))
+                    switch (myLuxFile.Name.Substring(0, 5))
                     {
                         case "txtr1":
                             nodeIcon = 2;
@@ -75,7 +92,7 @@ namespace HydroMod
                 LuxFile curFile = curLux.FileList[e.Node.Index];
                 luxTextMeta.Text = "Filename : " + e.Node.Text +
                     "\nAddress  : " + curFile.Address.ToString("X8") +
-                    "\nSize     : " + curFile.Length.ToString("X8");
+                    "\nSize     : " + curFile.Length.ToString("X8") + " (" + FileSize(curFile.Length) + ")";
                 dataViewImage.Size = new Size(512, 512);
                 dataViewImage.Image = null;
                 dataViewBin.ByteProvider = new DynamicByteProvider(curLux.Get(e.Node.Text));
@@ -88,7 +105,7 @@ namespace HydroMod
                         //curLux.luxStream.Position = curFile.Address;
                         //curLux.luxStream.Read(_DDS, 0x1C, _DDS.Length);
                         //Array.Copy(curLux.Get(e.Node.Text), 0x1C, DDS, 0, DDS.Length);
-                        
+
                         break;
                     case "data.":
                         string curFileString = new string(Encoding.ASCII.GetChars(curLux.Get(e.Node.Text))).Replace("\0", "\x01");
@@ -130,7 +147,7 @@ namespace HydroMod
                 }
                 else
                 {
-
+                    luxCtnrCtxtM.Show(Cursor.Position);
                 }
             }
         }
@@ -161,6 +178,27 @@ namespace HydroMod
             luxTextMeta.Text = "No file selected";
             dataViewImage.Size = new Size(512, 512);
             dataViewImage.Image = null;
+        }
+
+        private void luxCtnrXtrctAll(object sender, EventArgs e)
+        {
+            if (luxCtnrXtrctDiag.ShowDialog() == DialogResult.OK)
+            {
+                if (MessageBox.Show(
+    "This could take a while depending on your system performance, " +
+    "file extensions won't be set to their appropriate counterparts, " +
+    // (i.e. txtr1.dummy --(/)-> dummy.dds)
+    "and " + FileSize(myLuxs[0].luxStream.Length) + " of data will be copied. Click 'Yes' to continue.",
+        "Warning", MessageBoxButtons.YesNo,
+        MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2
+    ) == DialogResult.Yes)
+                    foreach (LuxFile myLuxFile in myLuxs[luxView.SelectedNode.Index].FileList)
+                    {
+                        File.WriteAllBytes(
+                            luxCtnrXtrctDiag.SelectedPath + '\\' + myLuxFile.Name,
+                            myLuxs[luxView.SelectedNode.Index].Get(myLuxFile.Name));
+                    }
+            }
         }
     }
 }

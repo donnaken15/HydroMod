@@ -7,6 +7,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using Be.Windows.Forms;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace HydroMod
 {
@@ -15,6 +16,7 @@ namespace HydroMod
         List<Lux> myLuxs = new List<Lux>();
         char[] bUnits = " KMGT".ToCharArray();
         uint bThousand = 1024; // based *ibibytes
+        CommonOpenFileDialog luxCtnrXtrctDiag = new CommonOpenFileDialog();
 
         public string FileSize(long length)
         {
@@ -35,6 +37,9 @@ namespace HydroMod
         {
             InitializeComponent();
             luxView.Nodes.Clear();
+            openLuxDiag.InitialDirectory = Directory.GetCurrentDirectory();
+            luxCtnrXtrctDiag.InitialDirectory = Directory.GetCurrentDirectory();
+            luxCtnrXtrctDiag.IsFolderPicker = true;
         }
 
         private void showLegend(object sender, EventArgs e)
@@ -52,19 +57,44 @@ namespace HydroMod
             foreach (string F in openLuxDiag.FileNames)
             {
                 Lux myNewLux = new Lux(F);
-                TreeNode/*myNewLux.*/_treeNode = luxView.Nodes.Add("", Path.GetFileName(F), 1, 1);
+                TreeNode/*myNewLux.*/_treeNode = luxView.Nodes.Add(F, Path.GetFileName(F), 1, 1);
                 //myNewLux._treeNode.Nodes.Add(System.Text.Encoding.ASCII.GetString(myNewLux.Get("")));
                 myLuxs.Add(myNewLux);
-                int nodeIcon = 0;
                 foreach (LuxFile myLuxFile in myNewLux.FileList)
                 {
+                    int nodeIcon = 0;
+                    // should probably make this its own function and return an id or something
                     switch (myLuxFile.Name.Substring(0, 5))
                     {
                         case "txtr1":
                             nodeIcon = 2;
                             break;
                         case "data.":
-                            nodeIcon = 0;
+                            byte[] tmp = myNewLux.Get(myLuxFile.Name);
+                            char[] tmp2 = new char[5];
+                            if (tmp.Length > tmp2.Length)
+                            {
+                                Array.Copy(tmp, 0, tmp2, 0, tmp2.Length);
+                                switch (new string(tmp2))
+                                {
+                                    case " Volu":
+                                        nodeIcon = 6;
+                                        break;
+                                    case "<?xml":
+                                        nodeIcon = 4;
+                                        break;
+                                    case "textu":
+                                        nodeIcon = 7;
+                                        break;
+                                    case "// Tu":
+                                    case "// Th":
+                                        nodeIcon = 5;
+                                        break;
+                                    default:
+                                        nodeIcon = 0;
+                                        break;
+                                }
+                            }
                             break;
                         case "mesh3":
                             break;
@@ -96,6 +126,7 @@ namespace HydroMod
                 dataViewImage.Size = new Size(512, 512);
                 dataViewImage.Image = null;
                 dataViewBin.ByteProvider = new DynamicByteProvider(curLux.Get(e.Node.Text));
+                ddsCtxtXport.Enabled = false;
                 switch (e.Node.Text.Substring(0, 5))
                 {
                     case "txtr1":
@@ -105,24 +136,26 @@ namespace HydroMod
                         //curLux.luxStream.Position = curFile.Address;
                         //curLux.luxStream.Read(_DDS, 0x1C, _DDS.Length);
                         //Array.Copy(curLux.Get(e.Node.Text), 0x1C, DDS, 0, DDS.Length);
-
+                        ddsCtxtXport.Enabled = true;
+                        dataViewTabs.SelectedIndex = 0;
+                        luxView.Focus();
                         break;
                     case "data.":
                         string curFileString = new string(Encoding.ASCII.GetChars(curLux.Get(e.Node.Text))).Replace("\0", "\x01");
                         dataViewText.Text = curFileString;
                         dataViewText.MaxLength = curFileString.Length;
+
+                        dataViewTabs.SelectedIndex = 2;
+                        luxView.Focus();
                         break;
                     case "mesh3":
-                        break;
                     case "anim4":
-                        break;
                     case "fbnk.":
-                        break;
                     case "shad4":
-                        break;
                     case "coll4":
+                        dataViewTabs.SelectedIndex = 1;
+                        luxView.Focus();
                         break;
-
                 }
             }
         }
@@ -154,11 +187,7 @@ namespace HydroMod
 
         private void Exit(object sender, FormClosingEventArgs e)
         {
-            for (int i = 0; i < myLuxs.Count; i++)
-            {
-                myLuxs[i].Dispose();
-            }
-            myLuxs.Clear();
+            Exit();
         }
 
         private void closeLux(object sender, EventArgs e)
@@ -182,7 +211,7 @@ namespace HydroMod
 
         private void luxCtnrXtrctAll(object sender, EventArgs e)
         {
-            if (luxCtnrXtrctDiag.ShowDialog() == DialogResult.OK)
+            if (luxCtnrXtrctDiag.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 if (MessageBox.Show(
     "This could take a while depending on your system performance, " +
@@ -195,9 +224,42 @@ namespace HydroMod
                     foreach (LuxFile myLuxFile in myLuxs[luxView.SelectedNode.Index].FileList)
                     {
                         File.WriteAllBytes(
-                            luxCtnrXtrctDiag.SelectedPath + '\\' + myLuxFile.Name,
+                            luxCtnrXtrctDiag.FileName + '\\' + myLuxFile.Name,
                             myLuxs[luxView.SelectedNode.Index].Get(myLuxFile.Name));
                     }
+            }
+        }
+
+        private void ddsXport(object sender, EventArgs e)
+        {
+            ddsXportFDiag.ShowDialog();
+        }
+
+        private void Exit(object sender, EventArgs e)
+        {
+            Exit();
+        }
+
+        private void Exit()
+        {
+            for (int i = 0; i < myLuxs.Count; i++)
+            {
+                myLuxs[i].Dispose();
+            }
+            myLuxs.Clear();
+            Application.Exit();
+        }
+
+        private void ddsXportFDiagConf(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (Path.GetExtension(ddsXportFDiag.FileName) != ".dds")
+                dataViewImage.Image.Save(ddsXportFDiag.FileName);
+            else
+            {
+                byte[] tmp = myLuxs[luxView.SelectedNode.Parent.Index].Get(luxView.SelectedNode.Text),
+                    tmp2 = new byte[tmp.Length - 0x1C];
+                Array.Copy(tmp, 0x1C, tmp2, 0, tmp2.Length);
+                File.WriteAllBytes(ddsXportFDiag.FileName, tmp2);
             }
         }
     }

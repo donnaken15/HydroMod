@@ -49,9 +49,14 @@ C4B5DEF0  81 7C D9 07 00 00 88 FD 12 00 D9 07 0B 00 9C 00  .|Ù...ˆý..Ù...œ.
 * figure out what allows for longer file name
   though the same pattern of random stuff from
   0x10 to 0x40 seems to be the same except for 0x24
+* why does game crash if address or length of file
+  is changed even by one byte
 * figure out literally everything else
 
 ## credits:
 
-DDS Reader by Jon D. Jackson
-Be.HexEditor by Bernhard Elbl
+| utility         | credit           |
+|-----------------|------------------|
+| DDS Reader      | Jon D. Jackson   |
+| Be.HexEditor    | Bernhard Elbl    |
+

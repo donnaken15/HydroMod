@@ -39,25 +39,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(h2omod));
             this.menuBar = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.replaceDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eraseDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.legendToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openLuxDiag = new System.Windows.Forms.OpenFileDialog();
             this.luxView = new System.Windows.Forms.TreeView();
             this.comGfxKeys = new System.Windows.Forms.ImageList(this.components);
             this.spCnt = new System.Windows.Forms.SplitContainer();
             this.dataViewTabs = new System.Windows.Forms.TabControl();
             this.dataViewTImage = new System.Windows.Forms.TabPage();
-            this.dataViewImage = new System.Windows.Forms.PictureBox();
             this.dataViewTBin = new System.Windows.Forms.TabPage();
             this.dataViewBin = new Be.Windows.Forms.HexBox();
             this.dataViewTText = new System.Windows.Forms.TabPage();
@@ -65,20 +58,30 @@
             this.dataViewTMeta = new System.Windows.Forms.TabPage();
             this.luxTextMeta = new System.Windows.Forms.Label();
             this.toolBar = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.luxViewRoot = new System.Windows.Forms.Panel();
             this.saveLuxFDiag = new System.Windows.Forms.SaveFileDialog();
             this.luxFileCtxtM = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.luxCtnrCtxtM = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.extractAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.closeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataViewImage = new System.Windows.Forms.PictureBox();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buildToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.replaceDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eraseDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.legendToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.replaceFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eraseFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.luxCtnrCtxtM = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.closeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.extractAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.luxCtnrXtrctDiag = new System.Windows.Forms.FolderBrowserDialog();
+            this.ddsCtxt = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ddsCtxtXport = new System.Windows.Forms.ToolStripMenuItem();
+            this.ddsXportFDiag = new System.Windows.Forms.SaveFileDialog();
             this.menuBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spCnt)).BeginInit();
             this.spCnt.Panel1.SuspendLayout();
@@ -86,7 +89,6 @@
             this.spCnt.SuspendLayout();
             this.dataViewTabs.SuspendLayout();
             this.dataViewTImage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataViewImage)).BeginInit();
             this.dataViewTBin.SuspendLayout();
             this.dataViewTText.SuspendLayout();
             this.dataViewTMeta.SuspendLayout();
@@ -94,6 +96,8 @@
             this.luxViewRoot.SuspendLayout();
             this.luxFileCtxtM.SuspendLayout();
             this.luxCtnrCtxtM.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataViewImage)).BeginInit();
+            this.ddsCtxt.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuBar
@@ -116,6 +120,7 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripMenuItem,
             this.saveToolStripMenuItem,
+            this.buildToolStripMenuItem,
             this.closeToolStripMenuItem,
             this.toolStripSeparator2,
             this.replaceDataToolStripMenuItem,
@@ -126,21 +131,6 @@
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 24);
             this.fileToolStripMenuItem.Text = "File";
-            // 
-            // openToolStripMenuItem
-            // 
-            this.openToolStripMenuItem.Image = global::HydroMod.Properties.Resources.openHS;
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.openToolStripMenuItem.Text = "Open";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.findLux);
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Image = global::HydroMod.Properties.Resources.saveHS;
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.saveToolStripMenuItem.Text = "Save";
             // 
             // closeToolStripMenuItem
             // 
@@ -154,28 +144,6 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(130, 6);
             // 
-            // replaceDataToolStripMenuItem
-            // 
-            this.replaceDataToolStripMenuItem.Image = global::HydroMod.Properties.Resources.Unnestrelatedfiles_7219_32;
-            this.replaceDataToolStripMenuItem.Name = "replaceDataToolStripMenuItem";
-            this.replaceDataToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.replaceDataToolStripMenuItem.Text = "Replace File";
-            // 
-            // eraseDataToolStripMenuItem
-            // 
-            this.eraseDataToolStripMenuItem.Image = global::HydroMod.Properties.Resources.DeleteHS;
-            this.eraseDataToolStripMenuItem.Name = "eraseDataToolStripMenuItem";
-            this.eraseDataToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.eraseDataToolStripMenuItem.Text = "Erase File";
-            // 
-            // saveFileToolStripMenuItem
-            // 
-            this.saveFileToolStripMenuItem.Image = global::HydroMod.Properties.Resources.saveHS;
-            this.saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
-            this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.saveFileToolStripMenuItem.Text = "Save File";
-            this.saveFileToolStripMenuItem.Click += new System.EventHandler(this.saveLuxFile);
-            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
@@ -184,8 +152,9 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.Exit);
             // 
             // editToolStripMenuItem
             // 
@@ -200,14 +169,6 @@
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(41, 24);
             this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // legendToolStripMenuItem
-            // 
-            this.legendToolStripMenuItem.Image = global::HydroMod.Properties.Resources.LegendHS;
-            this.legendToolStripMenuItem.Name = "legendToolStripMenuItem";
-            this.legendToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
-            this.legendToolStripMenuItem.Text = "Legend";
-            this.legendToolStripMenuItem.Click += new System.EventHandler(this.showLegend);
             // 
             // openLuxDiag
             // 
@@ -261,6 +222,7 @@
             this.comGfxKeys.Images.SetKeyName(4, "XML");
             this.comGfxKeys.Images.SetKeyName(5, "INI");
             this.comGfxKeys.Images.SetKeyName(6, "Consolelog");
+            this.comGfxKeys.Images.SetKeyName(7, "Glyphmap");
             // 
             // spCnt
             // 
@@ -304,17 +266,6 @@
             this.dataViewTImage.Text = "Image View";
             this.dataViewTImage.UseVisualStyleBackColor = true;
             // 
-            // dataViewImage
-            // 
-            this.dataViewImage.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.dataViewImage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataViewImage.Location = new System.Drawing.Point(3, 3);
-            this.dataViewImage.Name = "dataViewImage";
-            this.dataViewImage.Size = new System.Drawing.Size(512, 512);
-            this.dataViewImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.dataViewImage.TabIndex = 0;
-            this.dataViewImage.TabStop = false;
-            // 
             // dataViewTBin
             // 
             this.dataViewTBin.Controls.Add(this.dataViewBin);
@@ -339,6 +290,7 @@
             this.dataViewBin.ReadOnly = true;
             this.dataViewBin.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
             this.dataViewBin.Size = new System.Drawing.Size(841, 629);
+            this.dataViewBin.StringViewVisible = true;
             this.dataViewBin.TabIndex = 1;
             this.dataViewBin.UseFixedBytesPerLine = true;
             this.dataViewBin.VScrollBarVisible = true;
@@ -398,27 +350,6 @@
             this.toolBar.TabIndex = 3;
             this.toolBar.Text = "toolStrip1";
             // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::HydroMod.Properties.Resources.openHS;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.ToolTipText = "Open";
-            this.toolStripButton1.Click += new System.EventHandler(this.findLux);
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::HydroMod.Properties.Resources.saveHS;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "toolStripButton2";
-            this.toolStripButton2.ToolTipText = "Save";
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -450,6 +381,119 @@
             this.luxFileCtxtM.Name = "luxFileCtxtM";
             this.luxFileCtxtM.Size = new System.Drawing.Size(134, 70);
             // 
+            // luxCtnrCtxtM
+            // 
+            this.luxCtnrCtxtM.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.extractAllToolStripMenuItem,
+            this.toolStripSeparator4,
+            this.closeToolStripMenuItem1});
+            this.luxCtnrCtxtM.Name = "luxCtnrCtxtM";
+            this.luxCtnrCtxtM.Size = new System.Drawing.Size(131, 54);
+            // 
+            // extractAllToolStripMenuItem
+            // 
+            this.extractAllToolStripMenuItem.Name = "extractAllToolStripMenuItem";
+            this.extractAllToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.extractAllToolStripMenuItem.Text = "Extract All...";
+            this.extractAllToolStripMenuItem.Click += new System.EventHandler(this.luxCtnrXtrctAll);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(127, 6);
+            // 
+            // closeToolStripMenuItem1
+            // 
+            this.closeToolStripMenuItem1.Name = "closeToolStripMenuItem1";
+            this.closeToolStripMenuItem1.Size = new System.Drawing.Size(130, 22);
+            this.closeToolStripMenuItem1.Text = "Close";
+            this.closeToolStripMenuItem1.Click += new System.EventHandler(this.closeLux);
+            // 
+            // dataViewImage
+            // 
+            this.dataViewImage.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.dataViewImage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataViewImage.ContextMenuStrip = this.ddsCtxt;
+            this.dataViewImage.Location = new System.Drawing.Point(3, 3);
+            this.dataViewImage.Name = "dataViewImage";
+            this.dataViewImage.Size = new System.Drawing.Size(512, 512);
+            this.dataViewImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.dataViewImage.TabIndex = 0;
+            this.dataViewImage.TabStop = false;
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = global::HydroMod.Properties.Resources.openHS;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.ToolTipText = "Open";
+            this.toolStripButton1.Click += new System.EventHandler(this.findLux);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = global::HydroMod.Properties.Resources.saveHS;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "toolStripButton2";
+            this.toolStripButton2.ToolTipText = "Save";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Image = global::HydroMod.Properties.Resources.openHS;
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.findLux);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Image = global::HydroMod.Properties.Resources.saveHS;
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            // 
+            // buildToolStripMenuItem
+            // 
+            this.buildToolStripMenuItem.Image = global::HydroMod.Properties.Resources.rar32;
+            this.buildToolStripMenuItem.Name = "buildToolStripMenuItem";
+            this.buildToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.buildToolStripMenuItem.Text = "Build";
+            // 
+            // replaceDataToolStripMenuItem
+            // 
+            this.replaceDataToolStripMenuItem.Image = global::HydroMod.Properties.Resources.Unnestrelatedfiles_7219_32;
+            this.replaceDataToolStripMenuItem.Name = "replaceDataToolStripMenuItem";
+            this.replaceDataToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.replaceDataToolStripMenuItem.Text = "Replace File";
+            // 
+            // eraseDataToolStripMenuItem
+            // 
+            this.eraseDataToolStripMenuItem.Image = global::HydroMod.Properties.Resources.DeleteHS;
+            this.eraseDataToolStripMenuItem.Name = "eraseDataToolStripMenuItem";
+            this.eraseDataToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.eraseDataToolStripMenuItem.Text = "Erase File";
+            // 
+            // saveFileToolStripMenuItem
+            // 
+            this.saveFileToolStripMenuItem.Image = global::HydroMod.Properties.Resources.saveHS;
+            this.saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
+            this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.saveFileToolStripMenuItem.Text = "Save File";
+            this.saveFileToolStripMenuItem.Click += new System.EventHandler(this.saveLuxFile);
+            // 
+            // legendToolStripMenuItem
+            // 
+            this.legendToolStripMenuItem.Image = global::HydroMod.Properties.Resources.LegendHS;
+            this.legendToolStripMenuItem.Name = "legendToolStripMenuItem";
+            this.legendToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.legendToolStripMenuItem.Text = "Legend";
+            this.legendToolStripMenuItem.Click += new System.EventHandler(this.showLegend);
+            // 
             // replaceFileToolStripMenuItem
             // 
             this.replaceFileToolStripMenuItem.Image = global::HydroMod.Properties.Resources.Unnestrelatedfiles_7219_32;
@@ -472,37 +516,26 @@
             this.saveFileToolStripMenuItem1.Text = "Save File";
             this.saveFileToolStripMenuItem1.Click += new System.EventHandler(this.saveLuxFile);
             // 
-            // luxCtnrCtxtM
+            // ddsCtxt
             // 
-            this.luxCtnrCtxtM.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.extractAllToolStripMenuItem,
-            this.toolStripSeparator4,
-            this.closeToolStripMenuItem1});
-            this.luxCtnrCtxtM.Name = "luxCtnrCtxtM";
-            this.luxCtnrCtxtM.Size = new System.Drawing.Size(131, 54);
+            this.ddsCtxt.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ddsCtxtXport});
+            this.ddsCtxt.Name = "ddsCtxt";
+            this.ddsCtxt.Size = new System.Drawing.Size(114, 26);
             // 
-            // closeToolStripMenuItem1
+            // ddsCtxtXport
             // 
-            this.closeToolStripMenuItem1.Name = "closeToolStripMenuItem1";
-            this.closeToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.closeToolStripMenuItem1.Text = "Close";
-            this.closeToolStripMenuItem1.Click += new System.EventHandler(this.closeLux);
+            this.ddsCtxtXport.Name = "ddsCtxtXport";
+            this.ddsCtxtXport.Size = new System.Drawing.Size(113, 22);
+            this.ddsCtxtXport.Text = "Export...";
+            this.ddsCtxtXport.Click += new System.EventHandler(this.ddsXport);
             // 
-            // toolStripSeparator4
+            // ddsXportFDiag
             // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(127, 6);
-            // 
-            // extractAllToolStripMenuItem
-            // 
-            this.extractAllToolStripMenuItem.Name = "extractAllToolStripMenuItem";
-            this.extractAllToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.extractAllToolStripMenuItem.Text = "Extract All...";
-            this.extractAllToolStripMenuItem.Click += new System.EventHandler(this.luxCtnrXtrctAll);
-            // 
-            // luxCtnrXtrctDiag
-            // 
-            this.luxCtnrXtrctDiag.Description = "Extract all files from this Lux.";
+            this.ddsXportFDiag.Filter = "Common image file|*.png;*.dds|Portable Network Graphics|*.png|DirectDraw Surface|" +
+    "*.dds|Any type|*.*";
+            this.ddsXportFDiag.RestoreDirectory = true;
+            this.ddsXportFDiag.FileOk += new System.ComponentModel.CancelEventHandler(this.ddsXportFDiagConf);
             // 
             // h2omod
             // 
@@ -528,7 +561,6 @@
             this.dataViewTabs.ResumeLayout(false);
             this.dataViewTImage.ResumeLayout(false);
             this.dataViewTImage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataViewImage)).EndInit();
             this.dataViewTBin.ResumeLayout(false);
             this.dataViewTText.ResumeLayout(false);
             this.dataViewTText.PerformLayout();
@@ -538,6 +570,8 @@
             this.luxViewRoot.ResumeLayout(false);
             this.luxFileCtxtM.ResumeLayout(false);
             this.luxCtnrCtxtM.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataViewImage)).EndInit();
+            this.ddsCtxt.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -586,7 +620,10 @@
         private System.Windows.Forms.ToolStripMenuItem extractAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem1;
-        private System.Windows.Forms.FolderBrowserDialog luxCtnrXtrctDiag;
+        private System.Windows.Forms.ToolStripMenuItem buildToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip ddsCtxt;
+        private System.Windows.Forms.ToolStripMenuItem ddsCtxtXport;
+        private System.Windows.Forms.SaveFileDialog ddsXportFDiag;
     }
 }
 

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(itemLegend));
             this.legendTxt0 = new System.Windows.Forms.Label();
             this.legendTxt1 = new System.Windows.Forms.Label();
             this.legendTxt2 = new System.Windows.Forms.Label();
@@ -39,12 +38,15 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.legendImg3 = new System.Windows.Forms.PictureBox();
             this.legendImg2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.legendImg1 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.legendImg0 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.legendImg3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.legendImg2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.legendImg1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.legendImg0)).BeginInit();
@@ -150,6 +152,16 @@
             this.legendImg2.TabIndex = 4;
             this.legendImg2.TabStop = false;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::HydroMod.Properties.Resources.FontDialogHS;
+            this.pictureBox2.Location = new System.Drawing.Point(133, 40);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 3;
+            this.pictureBox2.TabStop = false;
+            // 
             // legendImg1
             // 
             this.legendImg1.Image = global::HydroMod.Properties.Resources.XMLFileHS;
@@ -180,6 +192,16 @@
             this.legendImg0.TabIndex = 0;
             this.legendImg0.TabStop = false;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(154, 40);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(78, 16);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Glyphmap";
+            // 
             // itemLegend
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -192,23 +214,26 @@
             this.Controls.Add(this.legendImg3);
             this.Controls.Add(this.legendTxt2);
             this.Controls.Add(this.legendImg2);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.legendImg1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.legendTxt1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.legendTxt0);
             this.Controls.Add(this.legendImg0);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "itemLegend";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "LUX Item Key";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.legendImg3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.legendImg2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.legendImg1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.legendImg0)).EndInit();
@@ -232,5 +257,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label2;
     }
 }
